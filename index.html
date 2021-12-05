@@ -4,106 +4,149 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Roshambo</title>
 </head>
-<script>
 
-    let computerSelection = null;
-    let playerSelection = null;
-    let result = null;
-    let outcome = null;
-    let playerScore = 0;
-    let computerScore = 0;
-    
-    function computerPlay(){
+<body>
+    <div class = 'column'>
+        <h1>Roshambo</h1>
+        <h2 class = 'first'>First to 5 wins!</h2>
+        <p>Your Score:</p>
+        <p>Enemy Score:</p>
+        <button class = 'rock'>Rock</button>
+        <button class = 'paper'>Paper</button>
+        <button class = 'scissors'>Scissors</button>
+    </div>
+</body>
+
+<script>
+// Rock Paper Scissors
+
+// Variables for playRound function
+let userSelection = null;
+let compSelection = null;
+let userScore = 0;
+let compScore = 0;
+let result = null;
+let outcome = null;
+// playRound function
+function playRound(){
+    if(userSelection === 'rock'){
+        if (compSelection === 'rock'){
+            result = 'It\'s a draw!';
+            outcome = 'draw';
+        }
+        else if (compSelection === 'paper'){
+            result = 'You Lose! Paper beats Rock!';
+            outcome = 'loss';
+            }
+        else {
+            result = 'You win! Rock beats Scissors!'
+            outcome = 'win';
+        }
+    }
+    else if (userSelection=== 'paper'){
+        if (compSelection === 'rock'){
+            result = 'You Win! Paper beats Rock!';
+            outcome = 'win';
+        }
+        else if (compSelection === 'paper'){
+            result = 'It\'s a draw!';
+            outcome = 'draw';
+        }
+        else {
+            result = 'You Lose! Scissors beats Paper!'
+            outcome = 'loss';
+        }
+    }
+    else if (userSelection === 'scissors'){
+        if (compSelection === 'rock'){
+            result = 'You Lose! Rock beats Scissors!';
+            outcome = 'loss';
+        }
+        else if (compSelection === 'paper'){
+            result = 'You win! Scissors beat Paper!';
+            outcome = 'win';
+        }
+        else {
+            result = 'It\'s a draw!'
+            outcome = 'draw';
+        }
+    }
+    console.log(outcome);
+}
+// computerPlay function 
+function computerPlay(){
         let random = Math.floor((Math.random() * 3) + 1);
             if (random === 1){
-                computerSelection = 'rock';
+                compSelection = 'rock';
             }
             else if (random === 2){
-                computerSelection = 'paper';
+                compSelection = 'paper';
             }
             else {
-                computerSelection = 'scissors';
+                compSelection = 'scissors';
             }
-        return computerSelection;
+        return compSelection;
+}
+// gameOver function
+function gameOver(){
+    if(userScore === 5 || compScore === 5){
+        const first = document.querySelector('.first');
+        const h2 = document.createElement('h2');
+        const text = document.createTextNode('Game Over!');
+        h2.appendChild(text);
+        const column = document.querySelector('.column');
+        column.insertBefore(h2, first);
+        first.remove();
+        return;
     }
+}
 
-    function playRound(a,b){
-        if (a.toLowerCase() === 'rock'){
-            if (b === 'rock'){
-                result = 'It\'s a draw!';
-                outcome = 'draw';
-            }
-            else if (b === 'paper'){
-                result = 'You Lose! Paper beats Rock!';
-                outcome = 'loss';
-            }
-            else {
-                result = 'You win! Rock beats Scissors!'
-                outcome = 'win';
-            }
-        }
-        else if (a.toLowerCase() === 'paper'){
-            if (b === 'rock'){
-                result = 'You Win! Paper beats Rock!';
-                outcome = 'win';
-            }
-            else if (b === 'paper'){
-                result = 'It\'s a draw!';
-                outcome = 'draw';
-            }
-            else {
-                result = 'You Lose! Scissors beats Paper!'
-                outcome = 'loss';
-            }
-        }
-        else if (a.toLowerCase() === 'scissors'){
-            if (b === 'rock'){
-                result = 'You Lose! Rock beats Scissors!';
-                outcome = 'loss';
-            }
-            else if (b === 'paper'){
-                result = 'You win! Scissors beat Paper!';
-                outcome = 'win';
-            }
-            else {
-                result = 'It\'s a draw!'
-                outcome = 'draw';
-            }
-        }
-        console.log(result);
+// playround via clicking buttons
+const rock = document.querySelector('.rock');
+rock.addEventListener('click', function (){
+    userSelection = 'rock';
+    gameOver();
+    computerPlay();
+    playRound();
+    if(outcome === 'win'){
+        userScore += 1;
     }
-    
-    function game(){
-        for (let i = 0; i < 5; i++){
-            playerSelection = prompt('Choose rock, paper, or scissors');
-            computerPlay();
-            playRound(playerSelection, computerSelection);
-                if (outcome === 'win'){
-                    playerScore += 1;
-                }
-                else if (outcome === 'tie'){
-                    playerScore += 0
-                }
-                else if (outcome === 'loss'){
-                    computerScore += 1;
-                }
-        }
-        if (playerScore > computerScore){
-            console.log('You won');
-        }
-        else if (playerScore < computerScore){
-            console.log('You lost!');
-        }
-        else if (playerScore === computerScore){
-            console.log('Draw!');
-        }
+    else if(outcome === 'loss'){
+        compScore += 1;
     }
-    
-    game();
+    gameOver();
+});
+const paper = document.querySelector('.paper');
+paper.addEventListener('click', function (){
+    userSelection = 'paper';
+    gameOver();
+    computerPlay();
+    playRound();
+    if(outcome === 'win'){
+        userScore += 1;
+    }
+    else if(outcome === 'loss'){
+        compScore += 1;
+    }
+    gameOver();
+});
+const scissors = document.querySelector('.scissors');
+scissors.addEventListener('click', function (){
+    userSelection = 'scissors';
+    gameOver();
+    computerPlay();
+    playRound();
+    if(outcome === 'win'){
+        userScore += 1;
+    }
+    else if(outcome === 'loss'){
+        compScore += 1;
+    }
+    gameOver();
+});
+
+
 </script>
-<body>
-    
-</body>
 </html>
