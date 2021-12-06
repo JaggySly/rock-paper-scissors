@@ -14,7 +14,10 @@ let first = null;
 let h2 = null;
 let restartBtn = null;
 let random = null;
+let random2 = null;
 let r = null;
+let compChoice = null;
+let userChoice = null;
 const rock = document.querySelector('.rock');
 const paper = document.querySelector('.paper');
 const scissors = document.querySelector('.scissors');
@@ -63,6 +66,7 @@ function playRound(){
             outcome = 'draw';
         }
     }
+    showChoice();
     showResult();
     return outcome;
 }
@@ -150,6 +154,48 @@ function showResult(){
     c.appendChild(r);
     random = 5;
     
+}
+
+// showChoice function
+function showChoice(){
+    if(userScore === 5 || compScore === 5){
+        if(random2 === 5){
+            return;
+        }
+    }
+    if(random2 === 5){
+        compChoice.remove();
+        userChoice.remove();
+    }
+    let choices = document.querySelector('.choices');
+    let instructions = document.querySelector('.instructions')
+    compChoice = document.createElement('img');
+    userChoice = document.createElement('img');
+    if(compSelection === 'rock'){
+        compChoice.src = 'icons/missile.png';
+    }
+    else if(compSelection === 'paper'){
+        compChoice.src = 'icons/alien.png';
+    }
+    else if(compSelection === 'scissors'){
+        compChoice.src='icons/virus.png';
+    }
+    if(userSelection === 'rock'){
+        userChoice.src = 'icons/missile.png';
+    }
+    else if(userSelection === 'paper'){
+        userChoice.src = 'icons/alien.png';
+    }
+    else if(userSelection === 'scissors'){
+        userChoice.src='icons/virus.png';
+    }
+    compChoice.setAttribute("height", "64");
+    compChoice.setAttribute("width", "64");
+    userChoice.setAttribute("height", "64");
+    userChoice.setAttribute("width", "64");
+    choices.appendChild(compChoice);
+    choices.insertBefore(userChoice, instructions);
+    random2 = 5;
 }
 
 // play a round via clicking buttons

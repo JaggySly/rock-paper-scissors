@@ -1,3 +1,6 @@
+
+/* Color Styling and Effects */
+
 * {
     margin: 0;
     padding: 0;
@@ -8,26 +11,29 @@ body {
     width: 100vw;
     margin: 0;
     background-color: black;
+    font-family:'Zilla Slab', serif;
 
 }
 h1 {
     color: #ec2f2f;
     font-size: 70px;
+    margin-top: 50px;
 }
 h2{
-    color: rgb(163, 162, 162);
+    color: rgb(255, 241, 113);
     font-size: 40px;
+    margin-top: 30px;
 }
 .instructions{
     font-size: 22px;
     border-style:double;
-    margin: 15px;
+    margin-top: 30px;
     padding: 20px;
     border-color: indigo;
     width: 350px;
 }
 span {
-    color: rgb(210, 233, 6);
+    color: rgb(255, 241, 113);
 }
 button{
     font-size: 22px;
@@ -57,4 +63,41 @@ button:hover{
     background-color: white;
     color: indigo;
     border-color: indigo;
+}
+.result{
+    color: rgb(255, 241, 113);
+    font-size: 25px;
+    margin-top: 40px;
+}
+
+/* Flexbox Styling */
+
+.column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+}
+.header{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.score{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    margin: 25px;
+}
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+}
+.choices{
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
 }
