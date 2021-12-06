@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: white;
+    font-size: 22px;
+}
+body {
+    width: 100vw;
+    margin: 0;
+    background-color: black;
+
+}
+h1 {
+    color: #ec2f2f;
+    font-size: 70px;
+}
+h2{
+    color: rgb(163, 162, 162);
+    font-size: 40px;
+}
+.instructions{
+    font-size: 22px;
+    border-style:double;
+    margin: 15px;
+    padding: 20px;
+    border-color: indigo;
+    width: 350px;
+}
+span {
+    color: rgb(210, 233, 6);
+}
+button{
+    font-size: 22px;
+    color:indigo;
+    padding: 20px 20px;
+    border-radius: 20px;
+    transition-duration: 0.4s;
+    width: 350px;
+    background-color:black;
+    border-color: indigo;
+    border-style: solid;
+    margin: 15px;
+}
+button:hover{
+    background-color: indigo;
+    border-color: white;
+    color: white;
+
+}
+.restart{
+    background-color: indigo;
+    transition-duration: 0.4s;
+    color: white;
+    border-color: white;
+}
+.restart:hover{
+    background-color: white;
+    color: indigo;
+    border-color: indigo;
+}

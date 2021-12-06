@@ -6,6 +6,8 @@ let userSelection = null;
 let compSelection = null;
 let userScore = 0;
 let compScore = 0;
+let userShields = 100;
+let enemyShields = 100;
 let result = null;
 let outcome = null;
 let first = null;
@@ -21,47 +23,48 @@ const scissors = document.querySelector('.scissors');
 function playRound(){
     if(userSelection === 'rock'){
         if (compSelection === 'rock'){
-            result = 'It\'s a draw!';
+            result = 'Your missiles collided with the enemy\'s missiles! No damage recieved on either side.';
             outcome = 'draw';
         }
         else if (compSelection === 'paper'){
-            result = 'You Lose! Paper beats Rock!';
+            result = 'Enemy telekinesis inverted your missile projectory! You\'ve taken damage!';
             outcome = 'loss';
             }
         else {
-            result = 'You win! Rock beats Scissors!'
+            result = 'Your missiles obliterated enemy virus! Enemy has taken damage! '
             outcome = 'win';
         }
     }
     else if (userSelection=== 'paper'){
         if (compSelection === 'rock'){
-            result = 'You Win! Paper beats Rock!';
+            result = 'Your telekinesis inverted enemy\'s missile projectory! Enemy has taken damage!';
             outcome = 'win';
         }
         else if (compSelection === 'paper'){
-            result = 'It\'s a draw!';
+            result = 'Enemy and user\'s telekinesis cancelled each other out! No damage recieved on either side.';
             outcome = 'draw';
         }
         else {
-            result = 'You Lose! Scissors beats Paper!'
+            result = 'Your telekinesis could not detect incoming enemy virus! You\'ve taken damage!';
             outcome = 'loss';
         }
     }
     else if (userSelection === 'scissors'){
         if (compSelection === 'rock'){
-            result = 'You Lose! Rock beats Scissors!';
+            result = 'Your virus was obliterated by enemy missiles! You\ve taken damage!';
             outcome = 'loss';
         }
         else if (compSelection === 'paper'){
-            result = 'You win! Scissors beat Paper!';
+            result = 'Enemy telekinesis could not detect your outgoing virus! Enemy has taken damage!';
             outcome = 'win';
         }
         else {
-            result = 'It\'s a draw!'
+            result = 'Both yours and the enemy\'s viruses were lost in space! No damage recieved on either side.'
             outcome = 'draw';
         }
     }
     showResult();
+    return outcome;
 }
 
 // computerPlay function 
@@ -98,14 +101,15 @@ function gameOver(){
              text = document.createTextNode('Game Over! You Lose!');
         }
         h2.appendChild(text);
-        const column = document.querySelector('.column');
-        column.insertBefore(h2, first);
+        const header = document.querySelector('.header');
+        header.insertBefore(h2, first);
         first.remove();
         restartBtn = document.createElement('button');
         restartBtn.classList.toggle('restart');
         const text2 = document.createTextNode('Restart');
         restartBtn.appendChild(text2);
-        column.insertBefore(restartBtn, paper);
+        const buttons = document.querySelector('.buttons');
+        buttons.appendChild(restartBtn);
         h2 = 5;
         restart();
         return;
@@ -122,10 +126,10 @@ restartBtn.addEventListener('click', function (){
 // showScore function
 
 function showScore(){
-    let myScore = document.querySelector('#myScore');
-    let enemyScore = document.querySelector('#enemyScore')
-    myScore.innerHTML = userScore;
-    enemyScore.innerHTML = compScore;
+    let myScore = document.querySelector('#userShields');
+    let enemyScore = document.querySelector('#enemyShields')
+    myScore.innerHTML = userShields + '%';
+    enemyScore.innerHTML = enemyShields + '%';
 }
 
 // showResult function
@@ -157,9 +161,11 @@ rock.addEventListener('click', function (){
     playRound();
     if(outcome === 'win' && userScore < 5 && compScore < 5){
         userScore += 1;
+        enemyShields -= 20;
     }
     else if(outcome === 'loss' && compScore < 5 && userScore < 5){
         compScore += 1;
+        userShields -= 20;
     }
     showResult();
     showScore();
@@ -172,9 +178,11 @@ paper.addEventListener('click', function (){
     playRound();
     if(outcome === 'win' && userScore < 5 && compScore < 5){
         userScore += 1;
+        enemyShields -= 20;
     }
     else if(outcome === 'loss' && compScore < 5 && userScore < 5){
         compScore += 1;
+        userShields -= 20;
     }
     showResult();
     showScore();
@@ -187,9 +195,11 @@ scissors.addEventListener('click', function (){
     playRound();
     if(outcome === 'win' && userScore < 5 && compScore < 5){
         userScore += 1;
+        enemyShields -= 20;
     }
     else if(outcome === 'loss' && compScore < 5 && userScore < 5){
         compScore += 1;
+        userShields -= 20;
     }
     showResult();
     showScore();

@@ -11,17 +11,22 @@
 
 <body>
     <div class = 'column'>
-        <h1>Roshambo</h1>
-        <h2 class = 'first'>First to 5 wins!</h2>
-        <div class = 'third-row'>
-            <button class = 'rock'>Rock</button>
-            <div class = 'score'>
-                <p>Your Score: <span id='myScore'></span></p>
-                <p>Enemy Score: <span id='enemyScore'></span></p>
-            </div>
-            <button class = 'scissors'>Scissors</button>
+        <div class='header'>
+            <h1>Roshambo Space Battle</h1>
+            <h2 class = 'first'>Destroy the enemy spacecraft!</h2>
+            <p class='instructions'>Use your weapons and telekinetic powers to defeat the enemy!<br>
+            - Missiles destroy Viruses<br> - Viruses evade Telikinesis <br> - Telekinesis manipulates Missiles
+            </p>
         </div>
-        <button class = 'paper'>Paper</button>
+        <div class ='score'>
+            <p>User Shields at:  <span id='userShields'></span></p>
+            <p>Enemy Shields at: <span id='enemyShields'></span></p>
+        </div>
+        <div class ='buttons'>
+            <button class = 'rock'><img src='icons/missile.png'><br>Missiles</button>    
+            <button class = 'scissors'><img src='icons/virus.png'><br>Virus</button>      
+            <button class = 'paper'><img src='icons/alien.png'><br>Telekinesis</button>
+        </div>
     </div>
 </body>
 </html>
