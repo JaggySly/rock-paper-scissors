@@ -8,6 +8,7 @@
     font-size: 22px;
 }
 body {
+    background-image: url(space.jpg);
     width: 100vw;
     margin: 0;
     background-color: black;
@@ -37,19 +38,19 @@ span {
 }
 button{
     font-size: 22px;
-    color:indigo;
+    color:red;
     padding: 20px 20px;
     border-radius: 20px;
     transition-duration: 0.4s;
     width: 350px;
-    background-color:black;
-    border-color: indigo;
+    background-color:transparent;
+    border-color: red;
     border-style: solid;
     margin: 15px;
     cursor: pointer;
 }
 button:hover{
-    background-color: indigo;
+    background-color: red;
     border-color: white;
     color: white;
 
