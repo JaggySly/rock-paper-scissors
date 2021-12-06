@@ -46,6 +46,7 @@ button{
     border-color: indigo;
     border-style: solid;
     margin: 15px;
+    cursor: pointer;
 }
 button:hover{
     background-color: indigo;
